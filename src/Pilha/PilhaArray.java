@@ -1,5 +1,6 @@
 package Pilha;
 
+
 public class PilhaArray implements Pilha{
 	private int t = -1;
 	private Object data[];
@@ -25,7 +26,7 @@ public class PilhaArray implements Pilha{
 	}
 
 	public void push(Object o) {
-		if(t == data.length) {
+		if(t+1 == data.length) {
 			Object a[] = new Object[data.length*2];
 			for(int i = 0; i < data.length; i++) {
 				a[i] = data[i];
@@ -46,4 +47,11 @@ public class PilhaArray implements Pilha{
 		return temp;
 	}
 	
+	public void showPilha(PilhaArray pp) {
+		System.out.print("[");
+		for(int i = 0; i < pp.t+1; i++) {
+			System.out.print(" " + pp.data[i]);
+		}
+		System.out.println(" ]");
+	}
 }

@@ -33,6 +33,7 @@ public class PilhaPV implements PilhaTrab{
 	public void pushVermelho(Object o) {
 		if(tv+1 == tp) {
 			data = increaseCapacity(data, tv, tp);
+			tp = data.length-1-tp;
 		}
 		tv++;
 		data[tv] = o;
@@ -41,6 +42,7 @@ public class PilhaPV implements PilhaTrab{
 	public void pushPreto(Object o) {
 		if(tv+1 == tp) {
 			data = increaseCapacity(data, tv, tp);
+			tp = data.length-1-tp;
 		}
 		tp--;
 		data[tp] = o;
@@ -56,6 +58,16 @@ public class PilhaPV implements PilhaTrab{
 		return temp;
 	}
 	
+	public Object popPreto() throws EPilhaError {
+		if(isEmpty()) {
+			throw new EPilhaError("Pilha Vaza");
+		}
+		Object temp = data[tp];
+		data[tp] = null;
+		tp++;
+		return temp;
+	}
+	
 	public Object[] increaseCapacity(Object data[], int tv, int tp) {
 		Object a[] = new Object[data.length*2];
 		int cont = a.length-1;
@@ -68,16 +80,6 @@ public class PilhaPV implements PilhaTrab{
 		}
 		data = a;
 		return data;
-	}
-	
-	public Object popPreto() throws EPilhaError {
-		if(isEmpty()) {
-			throw new EPilhaError("Pilha Vaza");
-		}
-		Object temp = data[tp];
-		data[tp] = null;
-		tp++;
-		return temp;
 	}
 	
 	public void showPilha(PilhaPV pp) {

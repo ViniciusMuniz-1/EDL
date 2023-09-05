@@ -33,6 +33,11 @@ public class TestePilhaPv {
 		pp.showPilha(pp);
 		System.out.println(pp.topPreto());
 		System.out.println(pp.topVermelho());
-		
+		pp.popPreto();
+		pp.popVermelho();
+		pp.showPilha(pp);
+		System.out.println("Tamanho: " + pp.size());
+		System.out.println(pp.topPreto());
+		System.out.println(pp.topVermelho());
 	}
 }

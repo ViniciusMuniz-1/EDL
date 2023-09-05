@@ -1,12 +1,15 @@
-package Pilha;
+package PilhaComVector;
+
+import java.util.Vector;
+import java.util.List;
 
 
 public class PilhaArray implements Pilha{
 	private int t = -1;
-	private Object data[];
+	private List<Object> data = new Vector<>();
 	
 	public PilhaArray(int tam){
-		data = new Object[tam];
+		data = new Vector<>(tam);
 	}
 	
 	public int size() {
@@ -22,19 +25,11 @@ public class PilhaArray implements Pilha{
 	}
 
 	public Object top() throws EPilhaVazia {
-		return data[t];
+		return data.lastElement();
 	}
 
 	public void push(Object o) {
-		if(t+1 == data.length) {
-			Object a[] = new Object[data.length*2];
-			for(int i = 0; i < data.length; i++) {
-				a[i] = data[i];
-			}
-			data = a;
-		}
-		t++;
-		data[t] = o;
+		data.add(o);
 	}
 
 	public Object pop() throws EPilhaVazia {

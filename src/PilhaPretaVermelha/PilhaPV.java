@@ -33,7 +33,6 @@ public class PilhaPV implements PilhaTrab{
 	public void pushVermelho(Object o) {
 		if(tv+1 == tp) {
 			data = increaseCapacity(data, tv, tp);
-			tp = data.length-1-tp;
 		}
 		tv++;
 		data[tv] = o;
@@ -42,7 +41,6 @@ public class PilhaPV implements PilhaTrab{
 	public void pushPreto(Object o) {
 		if(tv+1 == tp) {
 			data = increaseCapacity(data, tv, tp);
-			tp = data.length-1-tp;
 		}
 		tp--;
 		data[tp] = o;
@@ -79,6 +77,7 @@ public class PilhaPV implements PilhaTrab{
 			cont--;
 		}
 		data = a;
+		this.tp = data.length-1-tp;
 		return data;
 	}
 	

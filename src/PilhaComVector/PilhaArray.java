@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PilhaArray implements Pilha{
 	private int t = -1;
-	private List<Object> data = new Vector<>();
+	private Vector<Object> data = new Vector<>();
 	
 	public PilhaArray(int tam){
 		data = new Vector<>(tam);
@@ -30,14 +30,15 @@ public class PilhaArray implements Pilha{
 
 	public void push(Object o) {
 		data.add(o);
+		t++;
 	}
 
 	public Object pop() throws EPilhaVazia {
 		if(isEmpty()) {
 			throw new EPilhaVazia("Pilha Vazia");
 		}
-		Object temp = data[t];
-		data[t] = null;
+		Object temp = data.lastElement();
+		data.removeElementAt(data.lastIndexOf(temp));;
 		t--;
 		return temp;
 	}
@@ -45,7 +46,7 @@ public class PilhaArray implements Pilha{
 	public void showPilha(PilhaArray pp) {
 		System.out.print("[");
 		for(int i = 0; i < pp.t+1; i++) {
-			System.out.print(" " + pp.data[i]);
+			System.out.print(" " + pp.data.get(i));
 		}
 		System.out.println(" ]");
 	}

@@ -1,12 +1,20 @@
 package Fila;
 
-public class FilaArray {
+import Pilha.PilhaArray;
+
+public class FilaArray implements Fila{
+	private int size;
 	private int init;
 	private int last;
 	private Object data[];
 	
+	public FilaArray(int tam) {
+		size = tam;
+		data = new Object[tam];
+	}
+
 	public int size() {
-		return (data.length-init+last)%data.length;
+		return (size-init+last)%size;
 	}
 	
 	public boolean isEmpty() {
@@ -17,27 +25,39 @@ public class FilaArray {
 		}
 	}
 	
-	public Object first() {
-		return data[last-1];
+	public Object inicio() {
+		if(isEmpty()) {
+			throw new EFilaVazia("Fila vazia");
+		}
+		return data[init];
 	}
 	
 	public void enqueue(Object o) {
-		data[init-1] = o;
-		init--;
+		if(size() == size-1) {
+			throw new EFilaCheia("Fila cheia");
+		} else {
+			data[last] = o;
+			last = (last+1)%size;
+		}
 	}
 	
 	public Object dequeue() {
-		Object temp = data[last-1];
-		data[last-1] = null;
-		last--;
-		return temp;
+		Object o;
+		if(isEmpty()) {
+			throw new EFilaVazia("Fila vazia");
+		} else {
+			o = data[init];
+			data[init] = null;
+			init = (init+1)%size;
+		}
+		return o;
 	}
 	
-	public void enfileirar(Object o) throws EFilaCheia {
-		if(size() == data.length-1) {
-			throw new EFilaCheia("Fila cheia");
-		} else {
-			
+	public void showFila(FilaArray ff) {
+		System.out.print("[");
+		for(int i = 0; i < ff.size; i++) {
+			System.out.print(" " + ff.data[i]);
 		}
+		System.out.println(" ]");
 	}
 }

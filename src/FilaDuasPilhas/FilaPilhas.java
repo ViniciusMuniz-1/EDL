@@ -1,19 +1,33 @@
 package FilaDuasPilhas;
 
 public class FilaPilhas {
-	PilhaArray p1;
-	PilhaArray p2;
+	PilhaArray pp;
+	PilhaArray paux;
 	int tam;
-	int init;
-	int last;
 	
 	public FilaPilhas(int tam) {
 		this.tam = tam;
-		p1 = new PilhaArray(tam);
-		p2 = new PilhaArray(tam);
+		pp = new PilhaArray(tam);
+		paux = new PilhaArray(tam);
 	}
 	
 	public int size() {
-		
+		return pp.size();
+	}
+	
+	public boolean isEmpty() {
+		return pp.isEmpty();
+	}
+	
+	public Object inicio() {
+		return paux.top();
+	}
+	
+	public void enqueue() {
+		if(pp.size() == tam) {
+			int novoTam = tam*2;
+			Object newData[] = new Object[novoTam];
+			int ii = 
+		}
 	}
 }

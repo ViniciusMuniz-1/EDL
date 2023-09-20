@@ -1,5 +1,6 @@
 package FilaDuasPilhas;
 
+import Pilha.EPilhaVazia;
 
 public class PilhaArray implements Pilha{
 	private int t = -1;
@@ -10,11 +11,11 @@ public class PilhaArray implements Pilha{
 	}
 	
 	public int size() {
-		return t+1;
+		return getT()+1;
 	}
 
 	public boolean isEmpty() {
-		if(t == -1) {
+		if(getT() == -1) {
 			return true;
 		}else {
 			return false;
@@ -22,34 +23,34 @@ public class PilhaArray implements Pilha{
 	}
 
 	public Object top() throws EPilhaVazia {
-		return data[t];
+		return data[getT()];
 	}
 
 	public void push(Object o) {
-		if(t+1 == data.length) {
+		if(getT()+1 == data.length) {
 			Object a[] = new Object[data.length*2];
 			for(int i = 0; i < data.length; i++) {
 				a[i] = data[i];
 			}
 			data = a;
 		}
-		t++;
-		data[t] = o;
+		setT(getT() + 1);
+		data[getT()] = o;
 	}
 
 	public Object pop() throws EPilhaVazia {
 		if(isEmpty()) {
 			throw new EPilhaVazia("Pilha Vazia");
 		}
-		Object temp = data[t];
-		data[t] = null;
-		t--;
+		Object temp = data[getT()];
+		data[getT()] = null;
+		setT(getT() - 1);
 		return temp;
 	}
 	
 	public void showPilha(PilhaArray pp) {
 		System.out.print("[");
-		for(int i = 0; i < pp.t+1; i++) {
+		for(int i = 0; i < pp.getT()+1; i++) {
 			System.out.print(" " + pp.data[i]);
 		}
 		System.out.println(" ]");
@@ -59,6 +60,22 @@ public class PilhaArray implements Pilha{
 		if(isEmpty()) {
 			throw new EPilhaVazia("Pilha vazia");
 		}
-		t = -1;
+		setT(-1);
+	}
+
+	public Object getDataEspecific(int i) {
+		return data[i];
+	}
+
+	public void setDataEspecific(Object o, int index) {
+		this.data[index] = o;
+	}
+
+	public int getT() {
+		return t;
+	}
+
+	public void setT(int t) {
+		this.t = t;
 	}
 }

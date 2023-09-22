@@ -3,15 +3,12 @@ package FilaDuasPilhas;
 import FilaArrayCircular.EFilaVazia;
 
 public class FilaPilhas {
-	PilhaArray pilhaPrincipal;
-	PilhaArray pilhaAux;
+	static PilhaArray pilhaPrincipal;
 	int tam;
 	
 	public FilaPilhas(int tam) {
 		this.tam = tam;
 		pilhaPrincipal = new PilhaArray(tam);
-		pilhaAux = new PilhaArray(tam);
-		pilhaAux.setT(tam);
 	}
 	
 	public int size() {
@@ -23,28 +20,23 @@ public class FilaPilhas {
 	}
 	
 	public Object inicio() {
-		return pilhaPrincipal);
+		PilhaArray pilhaAux = invertePilha(pilhaPrincipal);
+		return pilhaAux.top();
 	}
 	
 	public void enqueue(Object o) {
 		if(pilhaPrincipal.size() == tam) {
 			int novoTam = tam*2;
 			PilhaArray newPilhaPrincipal = new PilhaArray(novoTam);
-			PilhaArray newPilhaAux = new PilhaArray(novoTam);
+			PilhaArray pilhaAux = invertePilha(pilhaPrincipal);
 			for(int i = 0; i < size(); i++) {
-				newPilhaPrincipal.setDataEspecific(pilhaPrincipal.getDataEspecific(i), i);
+				newPilhaPrincipal.push(pilhaAux.top());
+				pilhaAux.pop();
 			}
-			
-			for(int i = size()-1; i >= 0; i++) {
-				newPilhaAux.setDataEspecific(pilhaPrincipal.getDataEspecific(i), i);
-			}
-			
 			tam = novoTam;
 			pilhaPrincipal = newPilhaPrincipal;
-			pilhaAux = newPilhaAux;
 		}
 		pilhaPrincipal.push(o);
-		pilhaAux.push(o);
 	}
 	
 	public Object dequeue() {
@@ -52,17 +44,31 @@ public class FilaPilhas {
 		if(pilhaPrincipal.isEmpty()) {
 			throw new EFilaVazia("Fila vazia");
 		}
+		PilhaArray pilhaAux = invertePilha(pilhaPrincipal);
 		o = pilhaAux.top();
 		pilhaAux.pop();
-		pilhaPrincipal.setDataEspecific(null, tam-1);
+		pilhaPrincipal = invertePilha(pilhaAux);
 		return o;
 	}
 	
 	public void showFila(FilaPilhas ff) {
+		PilhaArray pilhaAux = invertePilha(pilhaPrincipal);
 		System.out.print("[");
 		for(int i = 0; i < size(); i++) {
-			System.out.print(" " + pilhaAux.getDataEspecific(i));
+			System.out.print(" " + pilhaAux.top());
+			pilhaAux.pop();
 		}
 		System.out.println(" ]");
+	}
+	
+	public PilhaArray invertePilha(PilhaArray pp) {
+		PilhaArray pilhaAux = new PilhaArray(pp.size());
+		
+		while (!pp.isEmpty()) {
+	        pilhaAux.push(pp.top());
+	        pp.pop();
+	    }
+		
+		return pilhaAux;
 	}
 }

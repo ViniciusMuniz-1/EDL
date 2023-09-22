@@ -63,14 +63,6 @@ public class PilhaArray implements Pilha{
 		setT(-1);
 	}
 
-	public Object getDataEspecific(int i) {
-		return data[i];
-	}
-
-	public void setDataEspecific(Object o, int index) {
-		this.data[index] = o;
-	}
-
 	public int getT() {
 		return t;
 	}

@@ -62,13 +62,21 @@ public class FilaPilhas {
 	}
 	
 	public PilhaArray invertePilha(PilhaArray pp) {
-		PilhaArray pilhaAux = new PilhaArray(pp.size());
-		
-		while (!pp.isEmpty()) {
-	        pilhaAux.push(pp.top());
+	    PilhaArray pilhaAux = new PilhaArray(pp.size());
+	    PilhaArray ppCopy = new PilhaArray(pp.size());
+
+	    while (!pp.isEmpty()) {
+	        Object elemento = pp.top();
+	        pilhaAux.push(elemento);
+	        ppCopy.push(elemento);
 	        pp.pop();
 	    }
-		
-		return pilhaAux;
+
+	    while (!ppCopy.isEmpty()) {
+	        pp.push(ppCopy.top());
+	        ppCopy.pop();
+	    }
+
+	    return pilhaAux;
 	}
 }

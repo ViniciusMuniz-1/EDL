@@ -1,4 +1,6 @@
-package FilaDuasPilhas;
+package FilaListaLigada;
+
+import FilaDuasPilhas.FilaPilhas;
 
 public class TesteFila {
 		public static void main(String[] args) {

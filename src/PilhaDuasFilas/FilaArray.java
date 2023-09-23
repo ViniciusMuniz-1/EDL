@@ -1,4 +1,4 @@
-package Fila;
+package PilhaDuasFilas;
 
 public class FilaArray implements Fila{
 	private int size;
@@ -12,7 +12,7 @@ public class FilaArray implements Fila{
 	}
 
 	public int size() {
-		return (size-init+last)%size;
+		return size;
 	}
 	
 	public boolean isEmpty() {

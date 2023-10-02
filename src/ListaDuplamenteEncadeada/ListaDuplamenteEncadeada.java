@@ -78,5 +78,65 @@ public class ListaDuplamenteEncadeada {
 		element2.data = temp;
 	}
 	
+	public void insertBefore(int index, Object element) {
+		No novoNo = new No(element);
+		No atual = first.next;
+		for(int i = 0; i < index; i++) {
+			atual = atual.next;
+		}
+		
+		atual.prev.next = novoNo;
+		novoNo.prev = atual.prev;
+		atual.prev = novoNo;
+		novoNo.next = atual;
+		
+		size++;
+	}
 	
+	public void insertAfter(int index, Object element) {
+		No novoNo = new No(element);
+		No atual = first.next;
+		for(int i = 0; i < index; i++) {
+			atual = atual.next;
+		}
+		
+		atual.next.prev = novoNo;
+		novoNo.next = atual.next;
+		atual.next = novoNo;
+		novoNo.prev = atual;
+		
+		size++;
+	}
+	
+	public void insertFirst(Object element) {
+		No novoNo = new No(element);
+		
+		novoNo.next = first.next;
+		novoNo.prev = first;
+		first.next = novoNo;
+		
+		size++;
+	}
+	
+	public void insertLast(Object element) {
+		No novoNo = new No(element);
+		
+		novoNo.prev = last.prev;
+		novoNo.next = last;
+		last.prev = novoNo;
+		
+		size++;
+	}
+		
+	public void remove(int index) {
+		No atual = first.next;
+		for(int i = 0; i < index; i++) {
+			atual = atual.next;
+		}
+		
+		atual.prev.next = atual.next;
+		atual.next.prev = atual.prev;
+		
+		size--;
+	}
 }

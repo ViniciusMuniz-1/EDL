@@ -8,7 +8,7 @@ public class VetorListaDuplamenteE {
 	public VetorListaDuplamenteE(int tam) {
 		this.first = null;
 		this.last = null;
-		this.size = tam;
+		this.size = 0;
 	}
 	
 	public int size() {
@@ -76,6 +76,7 @@ public class VetorListaDuplamenteE {
 		
 		atual.prev.next = atual.next;
 		atual.next.prev = atual.prev;
+		size--;
 		
 		return atual.data;
 	}

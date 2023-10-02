@@ -55,6 +55,7 @@ public class VetorArray implements Vetor{
 		for(int i = r; i < size; i++) {
 			data[i] = data[i+1];
 		}
+		size--;
 		return temp;
 	}
 	

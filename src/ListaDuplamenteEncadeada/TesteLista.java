@@ -1,10 +1,8 @@
 package ListaDuplamenteEncadeada;
 
-import ListaArray.ListaArray;
-
 public class TesteLista {
 	public static void main(String[] args) {
-		ListaArray ll = new ListaArray(5);
+		ListaDuplamenteEncadeada ll = new ListaDuplamenteEncadeada();
 		System.out.println("Inserção: ");
 		ll.insertFirst(1);
 		ll.insertFirst(8);

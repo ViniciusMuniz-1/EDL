@@ -15,13 +15,13 @@ public interface Sequencia {
 	public Object before(No node); 
 	public Object after(No node);
 	public Object replaceElement(No node, Object element);
-	public void swapElements(No node, Object element);
-	public void insertBefore();
-	public void insertAfter();
-	public void insertFirst();
-	public void insertLast();
-	public void remove();
+	public void swapElements(No node, No node2);
+	public void insertBefore(No node, Object element);
+	public void insertAfter(No node, Object element);
+	public void insertFirst(Object element);
+	public void insertLast(Object element);
+	public void remove(No node);
 	//MÉTODOS PONTE:
-	public Object atRanK(int rank);
+	public Object atRank(int rank);
 	public Object rankOf(No node);
 }

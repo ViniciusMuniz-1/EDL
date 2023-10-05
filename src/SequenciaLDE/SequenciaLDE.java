@@ -119,7 +119,77 @@ public class SequenciaLDE implements Sequencia {
 		return node.getNext().getData();
 	}
 	
+	public Object replaceElement(No node, Object element) {
+		Object temp = node.getData();
+		node.setData(element);
+		return temp;
+	}
 	
+	public void swapElements(No node1, No node2) {
+		Object temp = node1.getData();
+		node1.setData(node2.getData());
+		node2.setData(temp);
+	}
 	
+	public void insertBefore(No node, Object element) {
+		No novoNo = new No(element);
+		
+		node.getPrev().setNext(novoNo);
+		novoNo.setPrev(node.getPrev());
+		node.setPrev(novoNo);
+		novoNo.setNext(node);
+		
+		size++;
+	}
+	
+	public void insertAfter(No node, Object element) {
+		No novoNo = new No(element);
+		
+		node.getNext().setPrev(novoNo);
+		novoNo.setNext(node.getNext());
+		node.getNext().setPrev(novoNo);
+		novoNo.setPrev(node);
+		
+		size++;
+	}
+	
+	public void insertFirst(Object element) {
+		No novoNo = new No(element);
+		
+		novoNo.setNext(first.getNext());
+		first.getNext().setPrev(novoNo);
+		novoNo.setPrev(first);
+		first.setNext(novoNo);
+		
+		size++;
+	}
+	
+	public void insertLast(Object element) {
+		No novoNo = new No(element);
+		
+		novoNo.setPrev(last.getPrev());
+		last.getPrev().setNext(novoNo);
+		novoNo.setNext(last);
+		last.setPrev(novoNo);
+		
+		size++;
+	}
+	
+	public void remove(No node) {
+		node.getPrev().setNext(node.getNext());
+		node.getNext().setPrev(node.getPrev());
+		
+		node.setNext(null);
+		node.setPrev(null);
+	}
 	//-------------------------------------------------------
+	//-------------------------------------------------------
+	//MÉTODOS PONTE:
+	public Object atRank(int rank) {
+		
+	}
+	
+	public int rankOf(No node) {
+		
+	}
 }

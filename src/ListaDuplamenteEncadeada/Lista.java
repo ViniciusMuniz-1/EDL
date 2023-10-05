@@ -16,4 +16,5 @@ public interface Lista {
 	public void insertFirst(Object element);
 	public void insertLast(Object element);
 	public void remove(int index);
+	public No searchNode(Object element);
 }

@@ -1,6 +1,6 @@
 package SequenciaLDE;
 
-public class SequenciaLDE {
+public class SequenciaLDE implements Sequencia {
 	private int size;
 	private No first;
 	private No last;
@@ -27,6 +27,24 @@ public class SequenciaLDE {
 	
 	public boolean isEmpty() {
 		return this.getSize() == 0 ? true : false;
+	}
+	
+	public void showSequencia(Sequencia ss) {
+		No atual = this.first.getNext();
+		System.out.print("[ ");
+		for(int i = 0; i < ss.size(); i++) {
+			System.out.print(atual.getData());
+			atual = atual.getNext();
+			if(atual.getData() == null) {
+				break;
+			}
+			if(i+1 != ss.size()) {
+				System.out.print(", ");
+			}
+		}
+		
+		System.out.print("]");
+		System.out.println();
 	}
 	
 	//-------------------------------------------------------
@@ -84,6 +102,24 @@ public class SequenciaLDE {
 	//-------------------------------------------------------
 	//-------------------------------------------------------
 	//MÉTODOS DA LISTA:
+	
+	public Object first() {
+		return first.getNext().getData();
+	}
+	
+	public Object last() {
+		return last.getPrev().getData();
+	}
+	
+	public Object before(No node) {
+		return node.getPrev().getData();
+	}
+	
+	public Object after(No node) {
+		return node.getNext().getData();
+	}
+	
+	
 	
 	//-------------------------------------------------------
 }

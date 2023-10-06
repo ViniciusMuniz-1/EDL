@@ -21,7 +21,8 @@ public interface Sequencia {
 	public void insertFirst(Object element);
 	public void insertLast(Object element);
 	public void remove(No node);
+	public No searchNode(Object element);
 	//MÉTODOS PONTE:
-	public Object atRank(int rank);
-	public Object rankOf(No node);
+	public No atRank(int rank);
+	public int rankOf(No node);
 }

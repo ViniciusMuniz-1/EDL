@@ -147,7 +147,7 @@ public class SequenciaLDE implements Sequencia {
 		
 		node.getNext().setPrev(novoNo);
 		novoNo.setNext(node.getNext());
-		node.getNext().setPrev(novoNo);
+		node.setNext(novoNo);
 		novoNo.setPrev(node);
 		
 		size++;
@@ -182,14 +182,43 @@ public class SequenciaLDE implements Sequencia {
 		node.setNext(null);
 		node.setPrev(null);
 	}
+	
+	public No searchNode(Object element) {
+		No atual = first.getNext();
+		while(atual.getData() != element) {
+			atual = atual.getNext();
+		}
+		
+		return atual;
+	}
 	//-------------------------------------------------------
 	//-------------------------------------------------------
 	//MÉTODOS PONTE:
-	public Object atRank(int rank) {
+	public No atRank(int rank) {
+		No node;
+		if(rank <= size()/2) {
+			node = first.getNext();
+			for(int i = 0; i < rank; i++) {
+				node = node.getNext();
+			}
+		} else {
+			node = last.getPrev();
+			for(int i = 0; i < size()-rank-2; i++) {
+				node = node.getPrev();
+			}
+		}
 		
+		return node;
 	}
 	
 	public int rankOf(No node) {
+		No nodeVer = first.getNext();
+		int rank = 0;
+		while(node != nodeVer && node != last) {
+			nodeVer = nodeVer.getNext();
+			rank++;
+		}
 		
+		return rank;
 	}
 }

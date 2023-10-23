@@ -2,7 +2,15 @@
 /FilaArrayCircular/
 /FilaComVector/
 /FilaDuasPilhas/
+/FilaListaLigada/
+/ListaArray/
+/ListaDuplamenteEncadeada/
 /Pilha/
 /PilhaComVector/
+/PilhaDuasFilas/
 /PilhaPretaVermelha/
 /SequenciaLDE/
+/VetorComArray/
+/VetorListaDuplamenteEncadeada/
+/module-info.class
+/ArvoreGenerica/

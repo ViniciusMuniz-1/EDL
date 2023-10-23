@@ -89,8 +89,10 @@ public class ArvoreSimples {
 	//-------------------------------------------------------------
 	//MÉTODOS DE ATUALIZAÇÃO:
 	
-	public Object replace(No no) {
-		
+	public Object replace(No no, Object o) {
+		Object temp = no.getElement();
+		no.setElement(o);
+		return temp;
 	}
 	
 	//-------------------------------------------------------------

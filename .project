@@ -14,4 +14,21 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/ListaArray</name>
+			<type>2</type>
+			<locationURI>PARENT-5-PROJECT_LOC/Workspace/EDL/src/ListaArray</locationURI>
+		</link>
+		<link>
+			<name>src/ListaDuplamenteEncadeada</name>
+			<type>2</type>
+			<locationURI>PARENT-5-PROJECT_LOC/Workspace/EDL/src/ListaDuplamenteEncadeada</locationURI>
+		</link>
+		<link>
+			<name>src/SequenciaLDE</name>
+			<type>2</type>
+			<locationURI>PARENT-5-PROJECT_LOC/Workspace/EDL/src/SequenciaLDE</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

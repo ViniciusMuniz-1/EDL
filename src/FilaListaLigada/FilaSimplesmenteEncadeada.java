@@ -1,7 +1,5 @@
 package FilaListaLigada;
 
-import Pilha.PilhaArray;
-
 public class FilaSimplesmenteEncadeada implements Fila{
 	private int size;
 	private No first;

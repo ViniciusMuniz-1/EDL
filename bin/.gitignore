@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-/PilhaLDE/
-/VetorComArray/
-/VetorListaDuplamenteEncadeada/
-/PilhaLSE/
-/FilaListaLigada/
-/SequenciaLDE/
-=======
 /Fila/
 /FilaArrayCircular/
 /FilaComVector/
@@ -16,10 +8,9 @@
 /Pilha/
 /PilhaComVector/
 /PilhaDuasFilas/
+/PilhaLSE/
 /PilhaPretaVermelha/
 /SequenciaLDE/
 /VetorComArray/
 /VetorListaDuplamenteEncadeada/
-/module-info.class
 /ArvoreGenerica/
->>>>>>> dfee5b15f4f5045238bc5c6de68a859f4d82ee2e

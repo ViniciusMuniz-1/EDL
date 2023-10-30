@@ -7,7 +7,8 @@ public class ArvoreSimples {
 	private int size;
 	
 	public ArvoreSimples(Object elem) {
-		No raiz = new No(elem);
+		No raiz = new No(null, elem);
+		size = 1;
 	}
 	
 	//-------------------------------------------------------------
@@ -22,7 +23,7 @@ public class ArvoreSimples {
 			return 0;
 		} else {
 			int h = 0;
-			for(No item : no.getFilhos()) {
+			for(No item : no.children()) {
 				h = Math.max(h, height(item));
 			}
 			return 1+h;
@@ -51,12 +52,12 @@ public class ArvoreSimples {
 	}
 	
 	public No parent(No no) {
-		return no.getPai();
+		return no.getFather();
 	}
 	
-	public Iterator<No> children(No no) {
-		Iterator<No> it = no.getFilhos().iterator();
-		return it;
+	public Iterator<No> children(No v)
+	{
+		return v.children();
 	}
 	
 	//-------------------------------------------------------------
@@ -65,22 +66,56 @@ public class ArvoreSimples {
 	//MÉTODOS DE CONSULTA:
 	
 	public boolean isInternal(No no) {
-		return no.getFilhos().isEmpty() == false ? true : false;
+		return no.childrenNumber() > 0;
 	}
 	
 	public boolean isExternal(No no) {
-		return no.getFilhos().isEmpty() == true ? true : false;
+		return no.childrenNumber() == 0;
 	}
 	
 	public boolean isRoot(No no) {
-		return no.getPai() == null ? true : false;
+		return no == raiz;
+	}
+	
+	public void addChild(No no, Object element){
+		No novo = new No(no, element);
+		no.addChild(novo);
+		size++;
+	}
+	
+	public Object remove(No no){
+		No pai = no.getFather();
+		if (pai != null || isExternal(no))
+			pai.removeChild(no);
+		else
+			System.out.println("Erro ao remover!");
+		Object o = no.getElement();
+		size--;
+		return o;
+	}
+	
+	public void swapElements(No v, No w)
+	{
+		/*Método que serve de exercício
+		 * Este método deverá fazer com que o objeto
+		 * que estava na posição v fique na posição w
+		 * e fazer com que o objeto que estava na posição w
+		 * fique na posição v
+		 */  
+		
+	}
+	
+	public int profundidade(No node)
+	{
+		int profundidade = depth(node);
+		return profundidade;
 	}
 	
 	public int depth(No no) {
 		if(isRoot(no)) {
 			return 0;
 		} else {
-			return 1+depth(no.getPai());
+			return 1+depth(no.getFather());
 		}
 	}
 	//-------------------------------------------------------------

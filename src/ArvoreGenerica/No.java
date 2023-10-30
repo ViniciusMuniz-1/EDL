@@ -1,36 +1,53 @@
 package ArvoreGenerica;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class No {
 	private Object element;
-	private No pai;
-	private ArrayList<No> filhos = new ArrayList<>();
+	private No father;
+	private ArrayList<No> children = new ArrayList<No>();
 	
-	public No(Object elem) {
-		this.setElement(elem);
-	}
-	
-	public Object getElement() {
-		return element;
-	}
-	public void setElement(Object element) {
+	public No(No father, Object element){
+		this.father = father;
 		this.element = element;
 	}
 	
-	public No getPai() {
-		return pai;
-	}
-	public void setPai(No pai) {
-		this.pai = pai;
+	//-------------------------------------------------
+	//GETTERS AND SETTERS:
+	
+	public Object getElement(){
+		return this.element;
 	}
 	
-	public ArrayList<No> getFilhos() {
-		return filhos;
-	}
-	public void setFilhos(ArrayList<No> filhos) {
-		this.filhos = filhos;
+	public No getFather() {
+		return this.father;
 	}
 	
+	public void setElement(Object element){
+		this.element = element;
+	}
+	
+	public void setFather(No father) {
+		this.father = father;
+	}
+	
+	//-------------------------------------------------
+	
+	public void addChild(No o){
+		children.add(o);
+	}
+	
+	public void removeChild(No o){
+		children.remove(o);
+	}
+	
+	public int childrenNumber(){
+		return children.size();
+	}
+	
+	public Iterator<No> children(){
+		return children.iterator();
+	}
 }

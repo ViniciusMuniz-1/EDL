@@ -38,16 +38,10 @@ public class PilhaLSE implements Pilha{
 	}
 	
 	public Object pop() {
-		No aux = first.getNext();
-		while(aux.getNext() != last) {
-			aux = aux.getNext();
-		}
-		No temp = getLast();
-		setLast(aux);
-		getLast().setNext(null);
+		No temp = first.getNext();
+		first = first.getNext();
 		
-		size--;
-		
+		size--;		
 		return temp.getData();
 	}
 	

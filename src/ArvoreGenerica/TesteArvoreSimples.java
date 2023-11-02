@@ -55,5 +55,15 @@ public class TesteArvoreSimples {
 		arvere.preOrder(arvere.getRaiz());
 		
 		System.out.println("Tamanho da árvore (Quant de nós): " + arvere.size());
+		
+		System.out.println("Removendo o elemento 7:");
+		arvere.remove(arvere.searchNode(arvere.getRaiz(), 7));
+		
+		arvere.preOrder(arvere.getRaiz());
+		
+		System.out.println("Removendo o elemento 4 (consequentemente o 6 também):");
+		arvere.remove(arvere.searchNode(arvere.getRaiz(), 4));
+		
+		arvere.preOrder(arvere.getRaiz());
 	}
 }

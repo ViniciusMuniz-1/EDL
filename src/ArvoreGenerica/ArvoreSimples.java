@@ -164,10 +164,6 @@ public class ArvoreSimples {
 		newNode.getFather().addChild(newNode);
 	}
 	
-	public Object removeNo(No no) {
-		return null;
-	}
-	
 	public void preOrder(No node) {
 		System.out.println(node.getElement());
 		Iterator<No> it = node.children();

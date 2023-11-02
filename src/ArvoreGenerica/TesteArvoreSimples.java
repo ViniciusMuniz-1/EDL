@@ -33,7 +33,7 @@ public class TesteArvoreSimples {
 		}
 		
 		arvere.preOrder(arvere.getRaiz());
-		System.out.println("Tamanho da árvore: " + arvere.height(arvere.getRaiz()));
+		System.out.println("Tamanho da árvore a partir da raiz: " + arvere.height(arvere.getRaiz()));
 		
 		System.out.println("Elementos da árvore com o método elements():");
 		Iterator<Object> it = arvere.elements();
@@ -41,5 +41,19 @@ public class TesteArvoreSimples {
 			Object element = it.next();
 	        System.out.print(element + " ");
 		}
+		
+		System.out.println();
+		System.out.println("Mudando o elemento 3 para 10:");
+		arvere.replace(arvere.searchNode(arvere.getRaiz(), 3), 10);
+		
+		arvere.preOrder(arvere.getRaiz());
+		
+		System.out.println();
+		System.out.println("Fazendo a troca entre o 7 e o 8 para mudança de posição na árvore!");
+		arvere.swapElements(arvere.searchNode(arvere.getRaiz(), 7), arvere.searchNode(arvere.getRaiz(), 8));
+		
+		arvere.preOrder(arvere.getRaiz());
+		
+		System.out.println("Tamanho da árvore (Quant de nós): " + arvere.size());
 	}
 }

@@ -15,6 +15,12 @@ public class ArvoreSimples {
 	//-------------------------------------------------------------
 	//MÉTODOS GENÉRICOS:
 	
+	public int size() {
+		ArrayList<No> nodes = new ArrayList<No>();
+	    preOrderNodes(raiz, nodes);
+	    return nodes.size();
+	}
+	
 	public int tamanho() {
 		return this.getTamanho();
 	}
@@ -120,13 +126,9 @@ public class ArvoreSimples {
 	
 	public void swapElements(No v, No w)
 	{
-		/*Método que serve de exercício
-		 * Este método deverá fazer com que o objeto
-		 * que estava na posição v fique na posição w
-		 * e fazer com que o objeto que estava na posição w
-		 * fique na posição v
-		 */  
-		
+		Object temp = v.getElement();
+		v.setElement(w.getElement());
+		w.setElement(temp);
 	}
 	
 	public int profundidade(No node)

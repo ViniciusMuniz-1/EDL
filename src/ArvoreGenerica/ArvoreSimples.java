@@ -1,45 +1,69 @@
 package ArvoreGenerica;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ArvoreSimples {
 	private No raiz;
-	private int size;
+	private int tamanho;
 	
 	public ArvoreSimples(Object elem) {
-		No raiz = new No(null, elem);
-		size = 1;
+		raiz = new No(null, elem);
+		tamanho = 1;
 	}
 	
 	//-------------------------------------------------------------
 	//MÉTODOS GENÉRICOS:
 	
-	public int size() {
-		return this.getSize();
+	public int tamanho() {
+		return this.getTamanho();
 	}
 	
 	public int height(No no) {
 		if(isExternal(no)) {
 			return 0;
 		} else {
-			int h = 0;
-			for(No item : no.children()) {
-				h = Math.max(h, height(item));
+			int h = 1;
+			Iterator<No> it = no.children();
+			while(it.hasNext()) {
+				h = Math.max(h, height(it.next()));
 			}
 			return 1+h;
 		}
 	}
 	
 	public boolean isEmpty() {
-		return this.getSize() == 0 ? true : false;
+		return false;
 	}
 	
-	public Iterator elements() {
-		
+	public Iterator<Object> elements() {
+	    ArrayList<Object> elems = new ArrayList<Object>();
+	    preOrderElements(raiz, elems);
+	    return elems.iterator();
+	}
+
+	private void preOrderElements(No node, ArrayList<Object> elems) {
+	    elems.add(node.getElement());
+
+	    Iterator<No> it = node.children();
+	    while (it.hasNext()) {
+	        preOrderElements(it.next(), elems);
+	    }
 	}
 	
-	public Iterator nos() {
-		
+	public Iterator<No> nos() {
+	    ArrayList<No> nodes = new ArrayList<No>();
+	    preOrderNodes(raiz, nodes);
+	    return nodes.iterator();
+	}
+
+	private void preOrderNodes(No node, ArrayList<No> nodes) {
+	    nodes.add(node);
+
+	    Iterator<No> it = node.children();
+	    while (it.hasNext()) {
+	        preOrderNodes(it.next(), nodes);
+	    }
 	}
 	
 	//-------------------------------------------------------------
@@ -80,7 +104,7 @@ public class ArvoreSimples {
 	public void addChild(No no, Object element){
 		No novo = new No(no, element);
 		no.addChild(novo);
-		size++;
+		tamanho++;
 	}
 	
 	public Object remove(No no){
@@ -90,7 +114,7 @@ public class ArvoreSimples {
 		else
 			System.out.println("Erro ao remover!");
 		Object o = no.getElement();
-		size--;
+		tamanho--;
 		return o;
 	}
 	
@@ -133,26 +157,51 @@ public class ArvoreSimples {
 	//-------------------------------------------------------------
 	//MÉTODOS ADICIONAIS:
 	
-	public void addNo(No no) {
-		
+	public void addNo(Object element, No father) {
+		No newNode = new No(father, element);
+		newNode.getFather().addChild(newNode);
 	}
 	
 	public Object removeNo(No no) {
+		return null;
+	}
+	
+	public void preOrder(No node) {
+		System.out.println(node.getElement());
+		Iterator<No> it = node.children();
+		while(it.hasNext()) {
+			preOrder(it.next());
+		}
+	}
+	
+	public No searchNode(No node, Object elem) {
+		if(node.getElement().equals(elem)) {
+			return node;
+		}
 		
+		Iterator<No> it = node.children();
+		while(it.hasNext()) {
+			No result = searchNode(it.next(), elem);
+			if(result != null) {
+				return result;
+			}
+		}
+		
+		return null;
 	}
 	
 	//-------------------------------------------------------------
 	//Getter and Setters:
-	public int getSize() {
-		return size;
+	public int getTamanho() {
+		return tamanho;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
+	public void setTamanho(int tamanho) {
+		this.tamanho = tamanho;
 	}
 
 	public No getRaiz() {
-		return raiz;
+		return this.raiz;
 	}
 
 	public void setRaiz(No raiz) {

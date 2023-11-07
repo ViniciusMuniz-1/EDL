@@ -5,10 +5,11 @@ public class PilhaLSE implements Pilha{
 	private No first;
 	private No last;
 	
-	public PilhaLSE() {
+	public PilhaLSE(int value) {
 		this.setSize(0);
 		this.first = new No(null);
-		this.last = new No(null);
+		this.last = new No(value);
+		this.first.setNext(last);
 	}
 	
 	public int size() {
@@ -20,20 +21,13 @@ public class PilhaLSE implements Pilha{
 	}
 	
 	public Object top() {
-		return last.getData();
+		return first.getNext().getData();
 	}
 	
 	public void push(Object element) {
-		if(this.size() == 0) {
-			this.last = new No(element);
-			this.first.setNext(last);
-		}
-		else {		
-			No newNode = new No(element);
-			getLast().setNext(newNode);
-			setLast(newNode);
-		}
-		
+		No newNode = new No(element);
+		getLast().setNext(newNode);
+		setLast(newNode);
 		size++;
 	}
 	
